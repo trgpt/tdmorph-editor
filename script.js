@@ -1,3 +1,5 @@
+// Set working model path
+const MODEL_URL = 'https://justadudewhohacks.github.io/face-api.js/models';
 
 // Image Editor Logic
 const editorCanvas = document.getElementById('editorCanvas');
@@ -68,8 +70,8 @@ async function startMorphing() {
   const faceBInput = document.getElementById('faceB');
   if (!faceAInput.files[0] || !faceBInput.files[0]) return alert('Upload both faces');
 
-  await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models');
-  await faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models');
+  await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+  await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
 
   const imgA = await loadImage(faceAInput.files[0]);
   const imgB = await loadImage(faceBInput.files[0]);
